@@ -1,11 +1,11 @@
-package com.backend.api_pizzaria.users.controller;
+package com.backend.api_pizzaria.domain.users.controller;
 
 import com.backend.api_pizzaria.infra.security.TokenService;
-import com.backend.api_pizzaria.users.IUserRepository;
-import com.backend.api_pizzaria.users.User;
-import com.backend.api_pizzaria.users.controller.dtos.AuthResponseDTO;
-import com.backend.api_pizzaria.users.controller.dtos.AuthenticationDTO;
-import com.backend.api_pizzaria.users.controller.dtos.RegisterDTO;
+import com.backend.api_pizzaria.domain.users.IUserRepository;
+import com.backend.api_pizzaria.domain.users.User;
+import com.backend.api_pizzaria.domain.users.controller.dtos.AuthResponseDTO;
+import com.backend.api_pizzaria.domain.users.controller.dtos.AuthenticationDTO;
+import com.backend.api_pizzaria.domain.users.controller.dtos.RegisterDTO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

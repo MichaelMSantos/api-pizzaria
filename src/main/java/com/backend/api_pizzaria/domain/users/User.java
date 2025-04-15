@@ -1,4 +1,4 @@
-package com.backend.api_pizzaria.users;
+package com.backend.api_pizzaria.domain.users;
 
 import jakarta.persistence.*;
 import lombok.*;

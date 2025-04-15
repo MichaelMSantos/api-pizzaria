@@ -1,6 +1,6 @@
-package com.backend.api_pizzaria.users.service;
+package com.backend.api_pizzaria.domain.users.service;
 
-import com.backend.api_pizzaria.users.IUserRepository;
+import com.backend.api_pizzaria.domain.users.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

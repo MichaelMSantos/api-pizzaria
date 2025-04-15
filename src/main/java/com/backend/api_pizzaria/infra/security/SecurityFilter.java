@@ -1,6 +1,6 @@
 package com.backend.api_pizzaria.infra.security;
 
-import com.backend.api_pizzaria.users.IUserRepository;
+import com.backend.api_pizzaria.domain.users.IUserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
