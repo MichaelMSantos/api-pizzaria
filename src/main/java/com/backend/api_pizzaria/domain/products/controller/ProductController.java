@@ -6,8 +6,10 @@ import com.backend.api_pizzaria.domain.products.services.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.UUID;
@@ -19,11 +21,19 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @PostMapping
-    public ResponseEntity<ProductResponseDTO> createProduct(@RequestBody @Valid ProductRequestDTO request) {
-        ProductResponseDTO response = productService.newProduct(request);
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<ProductResponseDTO> createProduct(
+            @RequestParam("name") String name,
+            @RequestParam("price") String price,
+            @RequestParam("description") String description,
+            @RequestParam("categoryId") UUID categoryId,
+            @RequestParam("banner") MultipartFile bannerFile
+    ) {
+        ProductRequestDTO dto = new ProductRequestDTO(name, price, description, bannerFile.getOriginalFilename(), categoryId);
+        ProductResponseDTO response = productService.newProduct(dto, bannerFile);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
+
 
     @GetMapping("/category/{categoryId}")
     public ResponseEntity<List<ProductResponseDTO>> getProductByCategory(@PathVariable UUID categoryId){

@@ -1,6 +1,7 @@
 package com.backend.api_pizzaria.domain.products;
 
 import com.backend.api_pizzaria.domain.categories.Category;
+import com.backend.api_pizzaria.domain.products.items.Item;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
