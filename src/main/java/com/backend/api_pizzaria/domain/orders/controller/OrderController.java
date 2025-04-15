@@ -1,6 +1,7 @@
 package com.backend.api_pizzaria.domain.orders.controller;
 
 
+import com.backend.api_pizzaria.domain.orders.dtos.OrderActionRequestDTO;
 import com.backend.api_pizzaria.domain.orders.dtos.OrderRequestDTO;
 import com.backend.api_pizzaria.domain.orders.dtos.OrderResponseDTO;
 import com.backend.api_pizzaria.domain.orders.service.OrderService;
@@ -34,5 +35,15 @@ public class OrderController {
     public ResponseEntity<List<OrderResponseDTO>> getAllOrders(){
         List<OrderResponseDTO> orders = orderService.findAll();
         return ResponseEntity.ok(orders);
+    }
+
+    @PostMapping("/send")
+    public ResponseEntity<OrderResponseDTO> sendOrder(@RequestBody OrderActionRequestDTO request) {
+        return ResponseEntity.ok(orderService.sendOrder(request.orderId()));
+    }
+
+    @PostMapping("/finish")
+    public ResponseEntity<OrderResponseDTO> finishOrder(@RequestBody OrderActionRequestDTO request) {
+        return ResponseEntity.ok(orderService.finishOrder(request.orderId()));
     }
 }

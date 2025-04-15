@@ -42,4 +42,34 @@ public class OrderService {
                 .map(OrderResponseDTO::new)
                 .toList();
     }
+
+    public OrderResponseDTO sendOrder(UUID orderId){
+        Order order =orderRepository.findById(orderId)
+                .orElseThrow(() -> new RuntimeException("O pedido não existe."));
+
+        order.setDraft(false);
+        orderRepository.save(order);
+
+        return new OrderResponseDTO(
+                order.getId(),
+                order.getTableNumber(),
+                order.getStatus(),
+                order.getDraft(),
+                order.getName());
+    }
+
+    public OrderResponseDTO finishOrder(UUID orderId){
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new RuntimeException("O Pedido não existe."));
+
+        order.setStatus(true);
+        orderRepository.save(order);
+
+        return new OrderResponseDTO(
+                order.getId(),
+                order.getTableNumber(),
+                order.getStatus(),
+                order.getDraft(),
+                order.getName());
+    }
 }
